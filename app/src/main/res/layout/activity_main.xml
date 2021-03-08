@@ -9,15 +9,15 @@
         android:id="@+id/ed_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:hint="name"
+        android:inputType="textPersonName"
+        android:textSize="18sp" />
     <!--전화번호-->
     <EditText
         android:id="@+id/ed_phonenumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName" />
     <!--이메일-->
@@ -25,7 +25,6 @@
         android:id="@+id/ed_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -33,13 +32,12 @@
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button" />
+        android:text="Add" />
 
     <ListView
         android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1" />
 
 </LinearLayout>
