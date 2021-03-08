@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<Item> item_list;
-    Button btn_add;
+    Button btn_add, btn_del;
     EditText ed_name, ed_phonenumber, ed_email;
     ListView lv;
     myCustomAdapter ca;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         btn_add = (Button) findViewById(R.id.btn_add);
+        btn_del = (Button) findViewById(R.id.btn_del);
         ed_name = (EditText) findViewById(R.id.ed_name);
         ed_phonenumber = (EditText) findViewById(R.id.ed_phonenumber);
         ed_email = (EditText) findViewById(R.id.ed_email);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         item_list = new ArrayList<Item>();
         ca = new myCustomAdapter(this, R.layout.item_layout, item_list);
         btn_add.setOnClickListener(this);
+        btn_del.setOnClickListener(this);
         lv.setAdapter(ca);
 
     }
@@ -104,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_add:
                 Item item = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
                 item_list.add(item);
+                ca.notifyDataSetChanged();
+                break;
+            case R.id.btn_del:
+                Item item1 = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
+                //item_list.(item1);
                 ca.notifyDataSetChanged();
                 break;
         }

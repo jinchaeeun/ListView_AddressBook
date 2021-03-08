@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">List View Address</string>
+    <string name="DELETE">DELETE</string>
+    <string name="ADD">ADD</string>
 </resources>
