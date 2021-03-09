@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="name"
+        android:hint="Name"
         android:inputType="textPersonName"
         android:textSize="18sp" />
     <!--전화번호-->
@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Phone Number"
         android:inputType="textPersonName" />
     <!--이메일-->
     <EditText
@@ -26,18 +27,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="e-mail"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/ADD" />
 
     <Button
         android:id="@+id/btn_del"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/DELETE" />
 
     <ListView
@@ -45,6 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:choiceMode="singleChoice"/> <!--단일 선택: singleChoice, 다중선택:multipleChoice-->
+        android:choiceMode="multipleChoice" /> <!--단일 선택: singleChoice, 다중선택:multipleChoice-->
 
 </LinearLayout>
