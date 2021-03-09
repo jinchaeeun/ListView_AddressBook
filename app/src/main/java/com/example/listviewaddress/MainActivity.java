@@ -23,7 +23,7 @@ import org.xmlpull.v1.XmlPullParser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<Item> item_list;
     Button btn_add, btn_del;
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         btn_add = (Button) findViewById(R.id.btn_add);
         btn_del = (Button) findViewById(R.id.btn_del);
+        btn_add.setOnClickListener(this);
+        btn_del.setOnClickListener(this);
         ed_name = (EditText) findViewById(R.id.ed_name);
         ed_phonenumber = (EditText) findViewById(R.id.ed_phonenumber);
         ed_email = (EditText) findViewById(R.id.ed_email);
@@ -50,9 +52,32 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.listview);
         lv.setAdapter(ca);
 
-
-
     }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add:
+                // 아이템 내 각 위젯에 데이터 반영
+                Item item = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
+                item_list.add(item);
+                ca.notifyDataSetChanged();
+                ed_name.setText("");
+                ed_phonenumber.setText("");
+                ed_email.setText("");
+                break;
+            case R.id.btn_del:
+
+                Toast.makeText(MainActivity.this, "delete click", Toast.LENGTH_SHORT).show();
+                int pos = lv.getCheckedItemPosition();
+                if (pos != ListView.INVALID_POSITION) {
+                    item_list.remove(pos);
+                    lv.clearChoices();
+                    ca.notifyDataSetChanged();
+                }
+                break;
+        }
+    }
+
     public class myCustomAdapter extends BaseAdapter {
         LayoutInflater inflater;
         Context context;
@@ -123,30 +148,5 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
     }
-
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_add:
-                // 아이템 내 각 위젯에 데이터 반영
-                Item item = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
-                item_list.add(item);
-                ca.notifyDataSetChanged();
-                ed_name.setText("");
-                ed_phonenumber.setText("");
-                ed_email.setText("");
-                break;
-            case R.id.btn_del:
-                //Item item1 = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
-                //item_list.(item1);
-                ca.notifyDataSetChanged();
-                int pos = lv.getCheckedItemPosition();
-                if(pos != ListView.INVALID_POSITION){
-                    item_list.remove(pos);
-                    lv.clearChoices();
-                    ca.notifyDataSetChanged();
-                }
-                break;
-        }
-    }
-
 }
+
