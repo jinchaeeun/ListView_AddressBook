@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add:
-                // 아이템 내 각 위젯에 데이터 반영
                 Item item = new Item(ed_name.getText().toString(), ed_phonenumber.getText().toString(), ed_email.getText().toString());
                 item_list.add(item);
                 ca.notifyDataSetChanged();
@@ -66,14 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ed_email.setText("");
                 break;
             case R.id.btn_del:
-
+                item_list.remove(item_list.size()-1);
+                ca.notifyDataSetChanged();
                 Toast.makeText(MainActivity.this, "delete click", Toast.LENGTH_SHORT).show();
-                int pos = lv.getCheckedItemPosition();
-                if (pos != ListView.INVALID_POSITION) {
-                    item_list.remove(pos);
-                    lv.clearChoices();
-                    ca.notifyDataSetChanged();
-                }
+
                 break;
         }
     }
